@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Acme.Common;
 using System;
 using System.Collections.Generic;
@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace Acme.Common.Tests
 {
-    [TestClass()]
     public class LoggingServiceTests
     {
-        [TestMethod()]
+        [Fact]
         public void LogAction_Success()
         {
             // Arrange

@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Acme.Biz;
 using System;
 using System.Collections.Generic;
@@ -9,10 +9,9 @@ using Acme.Common;
 
 namespace Acme.Biz.Tests
 {
-    [TestClass()]
     public class VendorTests
     {
-        [TestMethod()]
+        [Fact]
         public void SendWelcomeEmail_ValidCompany_Success()
         {
             // Arrange
@@ -27,7 +26,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
+        [Fact]
         public void SendWelcomeEmail_EmptyCompany_Success()
         {
             // Arrange
@@ -42,7 +41,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
+        [Fact]
         public void SendWelcomeEmail_NullCompany_Success()
         {
             // Arrange
@@ -57,7 +56,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
+        [Fact]
         public void PlaceOrderTest()
         {
             // Arrange
@@ -74,7 +73,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected.Success, actual.Success);
             Assert.AreEqual(expected.Message, actual.Message);
         }
-        [TestMethod()]
+        [Fact]
         public void PlaceOrder_3Parameters()
         {
             // Arrange
@@ -94,7 +93,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected.Message, actual.Message);
         }
 
-        [TestMethod()]
+        [Fact]
         [ExpectedException(typeof(ArgumentNullException))]
         public void PlaceOrder_NullProduct_Exception()
         {
@@ -108,7 +107,7 @@ namespace Acme.Biz.Tests
             // Expected exception
         }
 
-        [TestMethod()]
+        [Fact]
         public void PlaceOrder_NoDeliveryDate()
         {
             // Arrange
@@ -127,7 +126,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected.Message, actual.Message);
         }
 
-        [TestMethod()]
+        [Fact]
         public void ToStringTest()
         {
             // Arrange

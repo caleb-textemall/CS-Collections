@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Acme.Biz;
 using System;
 using System.Collections.Generic;
@@ -9,11 +9,10 @@ using Acme.Common;
 
 namespace Acme.Biz.Tests
 {
-    [TestClass()]
     public class ProductTests
     {
 
-        [TestMethod()]
+        [Fact]
         public void CalculateSuggestedPriceTest()
         {
             // Arrange
@@ -28,7 +27,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
+        [Fact]
         public void Product_Null()
         {
             //Arrange
@@ -44,7 +43,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
+        [Fact]
         public void ProductName_Format()
         {
             //Arrange
@@ -60,7 +59,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod()]
+        [Fact]
         public void ProductName_TooShort()
         {
             //Arrange
@@ -79,7 +78,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expectedMessage, actualMessage);
         }
 
-        [TestMethod()]
+        [Fact]
         public void ProductName_TooLong()
         {
             //Arrange
@@ -98,7 +97,7 @@ namespace Acme.Biz.Tests
             Assert.AreEqual(expectedMessage, actualMessage);
         }
 
-        [TestMethod()]
+        [Fact]
         public void ProductName_JustRight()
         {
             //Arrange

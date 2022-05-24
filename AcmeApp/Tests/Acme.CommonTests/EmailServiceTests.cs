@@ -1,11 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Acme.Common.Tests
 {
-    [TestClass()]
     public class EmailServiceTests
     {
-        [TestMethod()]
+        [Fact]
         public void SendMessage_Success()
         {
             // Arrange

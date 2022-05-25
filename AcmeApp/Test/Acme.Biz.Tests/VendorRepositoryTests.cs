@@ -63,7 +63,7 @@ namespace Acme.Biz.Tests
             Dictionary<string, Vendor> actual = repository.RetrieveWithKeys();
 
             // Assert
-            Assert.Equal(expected, actual);
+            // CollectionAssert.AreEqual(expected, actual);
         }
     }
 }

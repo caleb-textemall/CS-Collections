@@ -46,8 +46,10 @@ namespace Acme.Biz
                 vendors.Add(new Vendor(2, "XYZ Inc", "xyz@xyz.com"));
             }
 
-            Console.WriteLine("vendors: " + vendors);
-
+            foreach (Vendor vendor in vendors) {
+                Console.WriteLine(vendor);
+            }
+            
             return vendors;
         }
 

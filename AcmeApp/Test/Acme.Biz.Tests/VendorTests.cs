@@ -70,6 +70,7 @@ namespace Acme.Biz.Tests
             Assert.Equal(expected.result, actual.result);
             Assert.Equal(expected.Message, actual.Message);
         }
+        
         [Fact]
         public void PlaceOrder_3Parameters()
         {
@@ -97,10 +98,18 @@ namespace Acme.Biz.Tests
             var vendor = new Vendor(1, null, null);
 
             // Act
-            var actual = vendor.PlaceOrder(null, 12);
+            bool exceptionThrown = false;
+            try {
+                var actual = vendor.PlaceOrder(null, 12);
+                // makes it here => did not throw exception
+            } catch {
+                exceptionThrown = true;
+            }
 
             // Assert
             // Expected exception
+            // want bool to be true bc we want error to be thrown
+            Assert.True(exceptionThrown);
         }
 
         [Fact]

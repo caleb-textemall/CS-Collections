@@ -32,8 +32,10 @@ namespace Acme.Biz
         public Product(int productId, string productName, string? description) 
         {
             this.ProductId = productId;
-            this.productName = productName;
-            this.ProductName = productName;
+            if (validProductName(productName)) {
+                this.productName = productName;
+                this.ProductName = productName;
+            }
             this.Description = description;
         }
         #endregion
@@ -47,28 +49,17 @@ namespace Acme.Biz
 
         public int ProductId { get; set; }
 
-        private string productName;
-        public string ProductName
+        private string? productName;
+        public string? ProductName
         {
             get {
-                var formattedValue = productName.Trim();
+                var formattedValue = productName?.Trim();
                 return formattedValue;
             }
             set
             {
-                if (value.Length < 3)
-                {
-                    ValidationMessage = "Product Name must be at least 3 characters";
-                }
-                else if (value.Length > 20)
-                {
-                    ValidationMessage = "Product Name cannot be more than 20 characters";
-
-                }
-                else
-                {
+                if (value != null && validProductName(value)) {
                     productName = value;
-
                 }
             }
         }
@@ -111,6 +102,23 @@ namespace Acme.Biz
         public override string ToString()
         {
             return this.ProductName + " (" + this.ProductId + ")";
+        }
+
+        /// <summary>
+        /// checks the product name input for valid length
+        /// </summary>
+        /// <param name="productName">name of the product being tested.</param>
+        /// <returns>true if valid product name</returns>
+        private bool validProductName(string productName) {
+            if (productName.Length < 3) {
+                ValidationMessage = "Product Name must be at least 3 characters";
+            } else if (productName.Length > 20) {
+                ValidationMessage = "Product Name cannot be more than 20 characters";
+
+            } else {
+                return true;  // valid name
+            }
+            return false;  // was invalid
         }
     }
 }

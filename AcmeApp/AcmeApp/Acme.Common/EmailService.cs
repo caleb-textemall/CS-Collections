@@ -19,7 +19,7 @@ namespace Acme.Common
         /// <param name="recipient">Email address of the message recipient.</param>
         /// <returns></returns>
         public string SendMessage(string subject, string message, 
-                                  string recipient)
+                                  string? recipient)
         {
             // Code to send an email
 

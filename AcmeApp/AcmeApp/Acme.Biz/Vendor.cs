@@ -13,8 +13,14 @@ namespace Acme.Biz
     public class Vendor
     {
         public int VendorId { get; set; }
-        public string CompanyName { get; set; }
-        public string Email { get; set; }
+        public string? CompanyName { get; set; }
+        public string? Email { get; set; }
+
+        public Vendor(int vendorId, string? companyName, string? email) {
+            VendorId = vendorId;
+            CompanyName = companyName;
+            Email = email;
+        }
 
         /// <summary>
         /// Sends a product order to the vendor.
@@ -24,7 +30,7 @@ namespace Acme.Biz
         /// <param name="deliverBy">Requested delivery date.</param>
         /// <param name="instructions">Delivery instructions.</param>
         /// <returns></returns>
-        public OperationResult<bool> PlaceOrder(Product product, int quantity,
+        public OperationResult<bool> PlaceOrder(Product? product, int quantity,
                                             DateTimeOffset? deliverBy = null,
                                             string instructions = "standard delivery")
         {
@@ -55,8 +61,7 @@ namespace Acme.Biz
             var orderText = orderTextBuilder.ToString();
 
             var emailService = new EmailService();
-            var confirmation = emailService.SendMessage("New Order", orderText,
-                                                                     this.Email);
+            var confirmation = emailService.SendMessage("New Order", orderText, this.Email);
             if (confirmation.StartsWith("Message sent:"))
             {
                 success = true;

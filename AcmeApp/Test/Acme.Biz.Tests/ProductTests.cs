@@ -35,8 +35,7 @@ namespace Acme.Biz.Tests {
         public void ProductName_Format()
         {
             //Arrange
-            var currentProduct = new Product();
-            currentProduct.ProductName = "  Steel Hammer  ";
+            var currentProduct = new Product(1, "  Steel Hammer  ", null);
 
             var expected = "Steel Hammer";
 
@@ -51,8 +50,7 @@ namespace Acme.Biz.Tests {
         public void ProductName_TooShort()
         {
             //Arrange
-            var currentProduct = new Product();
-            currentProduct.ProductName = "aw";
+            var currentProduct = new Product(1, "aw", null);
 
             string? expected = null;
             string expectedMessage = "Product Name must be at least 3 characters";
@@ -70,8 +68,7 @@ namespace Acme.Biz.Tests {
         public void ProductName_TooLong()
         {
             //Arrange
-            var currentProduct = new Product();
-            currentProduct.ProductName = "Steel Bladed Hand Saw";
+            var currentProduct = new Product(1, "Steel Bladed Hand Saw", null);
 
             string? expected = null;
             string expectedMessage = "Product Name cannot be more than 20 characters";
@@ -89,8 +86,7 @@ namespace Acme.Biz.Tests {
         public void ProductName_JustRight()
         {
             //Arrange
-            var currentProduct = new Product();
-            currentProduct.ProductName = "Saw";
+            var currentProduct = new Product(1, "Saw", null);
 
             string expected = "Saw";
             string? expectedMessage = null;

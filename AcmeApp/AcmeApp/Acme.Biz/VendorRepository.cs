@@ -14,10 +14,12 @@ namespace Acme.Biz
         /// <param name="vendorId">Id of the vendor to retrieve.</param>
         public Vendor Retrieve(int vendorId)
         {
-            // Create the instance of the Vendor class
-            Vendor vendor = new Vendor();
+            string? companyName = null;
+            string? email = null;
+            // find email and company name
 
-            // Code that retrieves the defined customer
+            // Create the instance of the Vendor class
+            Vendor vendor = new Vendor(vendorId, companyName, email);
 
             // Temporary hard coded values to return 
             if (vendorId == 1)

@@ -9,11 +9,9 @@
     // it is good practice to start all type parameters with the letter T
     // so that they can be easily identified as a type parameter    
     {
-        public OperationResult()
-        {
-        }
+        // public OperationResult() {}
 
-        public OperationResult(T result, string message) : this()
+        public OperationResult(T result, string message)
         {
             this.result = result;
             this.Message = message;

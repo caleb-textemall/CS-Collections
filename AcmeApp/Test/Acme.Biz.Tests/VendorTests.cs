@@ -15,54 +15,51 @@ namespace Acme.Biz.Tests
         public void SendWelcomeEmail_ValidCompany_Success()
         {
             // Arrange
-            var vendor = new Vendor();
-            vendor.CompanyName = "ABC Corp";
+            Vendor vendor = new Vendor(1, "ABC Corp", null);
             var expected = "Message sent: Hello ABC Corp";
 
             // Act
             var actual = vendor.SendWelcomeEmail("Test Message");
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void SendWelcomeEmail_EmptyCompany_Success()
         {
             // Arrange
-            var vendor = new Vendor();
-            vendor.CompanyName = "";
+            var vendor = new Vendor(1, "", null);
             var expected = "Message sent: Hello";
 
             // Act
             var actual = vendor.SendWelcomeEmail("Test Message");
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void SendWelcomeEmail_NullCompany_Success()
         {
             // Arrange
-            var vendor = new Vendor();
-            vendor.CompanyName = null;
+            var vendor = new Vendor(1, null, null);
             var expected = "Message sent: Hello";
 
             // Act
             var actual = vendor.SendWelcomeEmail("Test Message");
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void PlaceOrderTest()
         {
             // Arrange
-            var vendor = new Vendor();
+            var vendor = new Vendor(1, null, null);
             var product = new Product(1, "Saw", "");
-            var expected = new OperationResult(true,
+            var expected = new OperationResult<bool>(true,
                 "Order from Acme, Inc\r\nProduct: Saw\r\nQuantity: 12" +
                                      "\r\nInstructions: standard delivery");
 
@@ -70,16 +67,16 @@ namespace Acme.Biz.Tests
             var actual = vendor.PlaceOrder(product, 12);
 
             // Assert
-            Assert.AreEqual(expected.Success, actual.Success);
-            Assert.AreEqual(expected.Message, actual.Message);
+            Assert.Equal(expected.result, actual.result);
+            Assert.Equal(expected.Message, actual.Message);
         }
         [Fact]
         public void PlaceOrder_3Parameters()
         {
             // Arrange
-            var vendor = new Vendor();
+            var vendor = new Vendor(1, null, null);
             var product = new Product(1, "Saw", "");
-            var expected = new OperationResult(true,
+            var expected = new OperationResult<bool>(true,
                 "Order from Acme, Inc\r\nProduct: Saw\r\nQuantity: 12" +
                 "\r\nDeliver By: " + new DateTime(DateTime.Now.Year + 1, 10, 25).ToString("d") +
                 "\r\nInstructions: standard delivery");
@@ -89,16 +86,15 @@ namespace Acme.Biz.Tests
                 new DateTimeOffset(DateTime.Now.Year + 1, 10, 25, 0, 0, 0, new TimeSpan(-7, 0, 0)));
 
             // Assert
-            Assert.AreEqual(expected.Success, actual.Success);
-            Assert.AreEqual(expected.Message, actual.Message);
+            Assert.Equal(expected.result, actual.result);
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void PlaceOrder_NullProduct_Exception()
         {
             // Arrange
-            var vendor = new Vendor();
+            var vendor = new Vendor(1, null, null);
 
             // Act
             var actual = vendor.PlaceOrder(null, 12);
@@ -111,9 +107,9 @@ namespace Acme.Biz.Tests
         public void PlaceOrder_NoDeliveryDate()
         {
             // Arrange
-            var vendor = new Vendor();
+            var vendor = new Vendor(1, null, null);
             var product = new Product(1, "Saw", "");
-            var expected = new OperationResult(true,
+            var expected = new OperationResult<bool>(true,
                         "Order from Acme, Inc\r\nProduct: Saw\r\nQuantity: 12" +
                         "\r\nInstructions: Deliver to Suite 42");
 
@@ -122,15 +118,15 @@ namespace Acme.Biz.Tests
                                 instructions: "Deliver to Suite 42");
 
             // Assert
-            Assert.AreEqual(expected.Success, actual.Success);
-            Assert.AreEqual(expected.Message, actual.Message);
+            Assert.Equal(expected.result, actual.result);
+            Assert.Equal(expected.Message, actual.Message);
         }
 
         [Fact]
         public void ToStringTest()
         {
             // Arrange
-            var vendor = new Vendor();
+            var vendor = new Vendor(1, null, null);
             vendor.VendorId = 1;
             vendor.CompanyName = "ABC Corp";
             var expected = "Vendor: ABC Corp (1)";
@@ -139,7 +135,7 @@ namespace Acme.Biz.Tests
             var actual = vendor.ToString();
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.Equal(expected, actual);
         }
     }
 }

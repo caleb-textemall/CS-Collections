@@ -14,22 +14,29 @@ namespace Acme.Biz
     public class Product
     {
         #region Constructors
-        // public Product()
-        // {
-        //         // var colorOptions = new string[4];
-        //         // colorOptions[0] = "Red";
-        //         // colorOptions[1] = "Espresso";
-        //         // colorOptions[2] = "White";
-        //         // colorOptions[3] = "Navy";
-        //         // Console.WriteLine(colorOptions);
+        public Product()
+        {
+            // var colorOptions = new string[4];
+            // colorOptions[0] = "Red";
+            // colorOptions[1] = "Espresso";
+            // colorOptions[2] = "White";
+            // colorOptions[3] = "Navy";
+            // Console.WriteLine(colorOptions);
 
-        //         // can also declare it like this:
-        //         // string[] colorOptions = new string[4] {"Red", "Espresso", "White", "Navy"};
+            // can also declare it like this:
+            // string[] colorOptions = new string[4] {"Red", "Espresso", "White", "Navy"};
 
-        //         // or like this:
-        //         string[] colorOptions = {"Red", "Espresso", "White", "Navy"};
-        // }
-        public Product(int productId, string productName, string? description) 
+            // or like this:
+            // string[] colorOptions = {"Red", "Espresso", "White", "Navy"};
+        
+            List<string> colorOptions = new List<string>();
+            colorOptions.Add("Red");
+            colorOptions.Add("Espresso");
+            colorOptions.Add("White");
+            colorOptions.Add("Navy");
+        }
+
+        public Product(int productId, string productName, string? description) : this()
         {
             this.ProductId = productId;
             if (validProductName(productName)) {

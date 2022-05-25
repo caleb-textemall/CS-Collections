@@ -49,5 +49,21 @@ namespace Acme.Biz.Tests
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Fact]
+        public void RetrieveWithKeysTest() {
+            // Arrange
+            VendorRepository repository = new VendorRepository();
+            Dictionary<string, Vendor> expected = new Dictionary<string, Vendor>() {
+                {"ABC Corp", new Vendor(1, "ABC Corp", "abc@abc.com")},
+                {"XYZ Inc", new Vendor(2, "XYZ Inc", "xyz@xyz.com")}
+            };
+
+            // Act
+            Dictionary<string, Vendor> actual = repository.RetrieveWithKeys();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }

@@ -10,6 +10,18 @@ namespace Acme.Biz.Tests
 {
     public class VendorRepositoryTests
     {
+        [Fact]
+        public void RetrieveValueTest() {
+            // Arrange
+            VendorRepository repository = new VendorRepository();
+            int expected = 42;
+
+            // Act
+            int actual = repository.Retrievevalue<int>("Select ...", 42);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
 
     }
 }

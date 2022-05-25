@@ -32,6 +32,8 @@ namespace Acme.Biz
         }
 
         public T Retrievevalue<T>(string sql, T defaultValue) {
+            // call the database to retrieve the value
+            // if no value is returned, return the default value
             T value = defaultValue;
             return value;
         }

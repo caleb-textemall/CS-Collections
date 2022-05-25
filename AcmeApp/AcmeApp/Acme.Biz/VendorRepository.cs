@@ -8,6 +8,8 @@ namespace Acme.Biz
 {
     public class VendorRepository
     {
+        List<Vendor>? vendors;
+
         /// <summary>
         /// Retrieve one vendor.
         /// </summary>
@@ -29,6 +31,24 @@ namespace Acme.Biz
                 vendor.Email = "abc@abc.com";
             }
             return vendor;
+        }
+
+        /// <summary>
+        /// Retrieves all of the approved vendors
+        /// </summary>
+        /// <returns>list of the approved vendors</returns>
+        public List<Vendor> Retrieve() {
+            if (vendors == null) {
+                // need to create vendor list
+                vendors = new List<Vendor>();
+
+                vendors.Add(new Vendor(1, "ABC Corp", "abc@abc.com"));
+                vendors.Add(new Vendor(2, "XYZ Inc", "xyz@xyz.com"));
+            }
+
+            Console.WriteLine("vendors: " + vendors);
+
+            return vendors;
         }
 
         public T Retrievevalue<T>(string sql, T defaultValue) {

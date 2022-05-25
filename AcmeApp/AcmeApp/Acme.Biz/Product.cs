@@ -29,13 +29,15 @@ namespace Acme.Biz
             // or like this:
             // string[] colorOptions = {"Red", "Espresso", "White", "Navy"};
         
-            List<string> colorOptions = new List<string>();
-            colorOptions.Add("Red");
-            colorOptions.Add("Espresso");
-            colorOptions.Add("White");
-            colorOptions.Add("Navy");
-            colorOptions.Insert(2, "Purple");
-            colorOptions.Remove("White");
+            // List<string> colorOptions = new List<string>();
+            // colorOptions.Add("Red");
+            // colorOptions.Add("Espresso");
+            // colorOptions.Add("White");
+            // colorOptions.Add("Navy");
+            // colorOptions.Insert(2, "Purple");
+            // colorOptions.Remove("White");
+            
+            List<string> colorOptions = new List<string>() {"Red", "Espresso", "White", "Navy"};
             Console.WriteLine(colorOptions);
         }
 

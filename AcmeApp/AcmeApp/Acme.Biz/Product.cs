@@ -34,6 +34,9 @@ namespace Acme.Biz
             colorOptions.Add("Espresso");
             colorOptions.Add("White");
             colorOptions.Add("Navy");
+            colorOptions.Insert(2, "Purple");
+            colorOptions.Remove("White");
+            Console.WriteLine(colorOptions);
         }
 
         public Product(int productId, string productName, string? description) : this()

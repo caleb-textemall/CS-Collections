@@ -39,6 +39,13 @@ namespace Acme.Biz
             
             List<string> colorOptions = new List<string>() {"Red", "Espresso", "White", "Navy"};
             Console.WriteLine(colorOptions);
+
+            Dictionary<string, string> states = new Dictionary<string, string>();
+            states.Add("TX", "Texas");
+            states.Add("CA", "California");
+            states.Add("NY", "New York");
+            states.Add("FL", "Florida");
+            Console.WriteLine(states);
         }
 
         public Product(int productId, string productName, string? description) : this()

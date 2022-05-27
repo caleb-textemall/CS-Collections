@@ -89,5 +89,31 @@ namespace Acme.Biz
                                                         this.Email);
             return confirmation;
         }
+
+        /// <summary>
+        /// sends an email too a set of vendors. 
+        /// </summary>
+        /// <param name="vendors">Collection of vendors</param>
+        /// <param name="message">Message to send</param>
+        /// returns>list of confirmations</returns>
+        // NOTE: because the type is IList, the function can take in any type of collection that implements IList
+        // it's basically making an argument saying, i just need the methods that IList requires be implemented and i can do what i need to do
+        public static List<string> SendEmail(IList<Vendor>? vendors, string message) {
+            List<string> confirmations = new List<string>();
+            EmailService emailService = new EmailService();
+
+            if (vendors == null) {
+                return confirmations;
+            }
+
+            foreach (Vendor vendor in vendors) {
+                string subject = "Important message for: " + vendor.CompanyName;
+                string confirmation = emailService.SendMessage(subject, message, vendor.Email);
+
+                confirmations.Add(confirmation);
+            }
+
+            return confirmations;
+        }
     }
 }

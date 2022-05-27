@@ -85,5 +85,9 @@ namespace Acme.Biz
 
             return success;
         }
+
+        public List<Vendor>? RetrieveArray() { 
+            return vendors;
+        }
     }
 }

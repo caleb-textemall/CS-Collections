@@ -89,5 +89,29 @@ namespace Acme.Biz
         public List<Vendor>? RetrieveArray() { 
             return vendors;
         }
+
+        /// <summary>
+        /// Retrieves all of the approved vendors, one at a time
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Vendor> RetrieveWithIterator() {
+            // get the data from the database 
+            this.Retrieve();
+
+            if (vendors == null) {
+                vendors = new List<Vendor>();
+            }
+
+            foreach (var vendor in vendors) {
+                Console.WriteLine($"vendor Id: {vendor.VendorId}");
+                yield return vendor;
+                // the yield statement returns the item then continues running the function
+                // in this case, each vendor would be returned one at a time
+            
+                // this is referred to as deferred execution 
+
+                // also provides lazy execution, only return one element at a time
+            }
+        }
     }
 }

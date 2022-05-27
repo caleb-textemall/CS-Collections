@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Acme.Biz.Tests
 {
@@ -65,5 +66,43 @@ namespace Acme.Biz.Tests
             // Assert
             // CollectionAssert.AreEqual(expected, actual);
         }
+
+        [Fact]
+        public void RetrieveAllTest() {
+            // Arrange
+            var repository = new VendorRepository();
+            var expected = new List<Vendor>() {
+                { new Vendor(22, "Amalgamated Toys", "a@abc.com") },
+                { new Vendor(28, "Toy Blocks Inc", "blocks@abc.com") },
+                { new Vendor(35, "Car Toys", "car@abc.com") },
+                { new Vendor(42, "Toys for Fun", "fun@abc.com") }
+            };
+
+            // Act
+            var vendors = repository.RetrieveAll();
+            // filtering vendors to only those with toy in the name
+            // var vendorQuery = from v in vendors 
+            //                   where v.CompanyName.Contains("Toy")
+            //                   orderby v.CompanyName
+            //                   select v;
+            // this is the definition of the query
+
+            // method linq syntax
+            // var vendorQuery = vendors.Where(FilterCompanies)
+            //                          .OrderBy(OrderCompaniesByName);
+
+            var vendorQuery = vendors.Where(v => v.CompanyName.Contains("Toy"))
+                                     .OrderBy(v => v.CompanyName);
+
+            // Assert
+            // collection assert?
+            // CollectionAssert.AreEqual(expected, vendorQuery.ToList());
+            // query would be run here
+            vendorQuery.ToList();
+        }
+
+        // private bool FilterCompanies(Vendor v) => v.CompanyName.Contains("Toy");
+
+        // private string OrderCompaniesByName(Vendor v) => v.CompanyName;
     }
 }

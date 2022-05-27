@@ -113,5 +113,25 @@ namespace Acme.Biz
                 // also provides lazy execution, only return one element at a time
             }
         }
+
+        /// <summary>
+        /// Retrieves all of the vendors
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Vendor> RetrieveAll() {
+            var vendors = new List<Vendor>() {
+                { new Vendor(1, "ABC Corp", "abc@abc.com") },
+                { new Vendor(2, "XYZ Inc", "xyz@xyz.com") },
+                { new Vendor(12, "EFG Ltd", "efg@efg.com") },
+                { new Vendor(17, "HIJ AG", "hij@hij.com") },
+                { new Vendor(22, "Amalgamated Toys", "a@abc.com") },
+                { new Vendor(28, "Toy Blocks Inc", "blocks@abc.com") },
+                { new Vendor(31, "Home Products Inc", "home@abc.com") },
+                { new Vendor(35, "Car Toys", "car@abc.com") },
+                { new Vendor(42, "Toys for Fun", "fun@abc.com") }
+            };
+
+            return vendors;
+        }
     }
 }
